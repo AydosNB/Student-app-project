@@ -1,6 +1,6 @@
 import { renderStudents } from "./render.js"
 
-const url = "http://localhost:3000/users"
+const url = "https://students-data-base.onrender.com/users"
 
 export async function getStudentsData(url) {
     try {

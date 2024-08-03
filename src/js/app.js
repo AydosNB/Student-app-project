@@ -1,7 +1,7 @@
 import { closeModal, showModal } from "./modules/actions.js"
 import { getStudentsData } from "./modules/request.js"
 
-const url = "http://localhost:3000/users"
+const url = "https://students-data-base.onrender.com/users"
 const addUserBtn = document.querySelector("#add-user")
 const studentForm = document.querySelector("#student-form")
 const userImage = document.querySelector("#user-image")

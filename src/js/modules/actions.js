@@ -1,6 +1,6 @@
 import { getStudentsData } from "./request.js"
 
-const url = "http://localhost:3000/users"
+const url = "https://students-data-base.onrender.com/users"
 const modalOverlay = document.querySelector("#modal-overlay")
 const studentForm = document.querySelector("#student-form")
 const userImage = document.querySelector("#user-image")
@@ -43,7 +43,7 @@ function setInputValue(student) {
 export function showModal(id) {
     if (id) {
         console.log(id)
-        fetch("http://localhost:3000/users/" + id,).then(res => res.json()).then(data => {
+        fetch(`${url}/${id}`).then(res => res.json()).then(data => {
             setInputValue(data)
             userImage.setAttribute("src", studentForm.image.value)
         })
