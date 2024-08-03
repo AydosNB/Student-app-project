@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "json-server": "json-server --watch ./db/students.json --port 3000",
-    "live-server": "live-server ./src --port=5500",
-    "tailwindcss": "npx tailwindcss -i ./src/styles/input.css -o ./src/styles/main.css --watch",
-    "start": "concurrently \"npm run json-server\" \"npm run live-server\" \"npm run tailwindcss\""
+    "json-server": "json-server --watch ./db/students.json --port 3000"
   },
   "keywords": [],
   "author": "",
