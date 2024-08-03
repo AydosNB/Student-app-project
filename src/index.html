@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student App</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <header class="border-b-[1px] shadow-sm">
+        <div class="w-[90%] lg:w-[80%] mx-auto max-w-[1400px]">
+            <div class="flex justify-between items-center h-[60px]">
+                <div class="text-[16px] md:text-[20px] font-bold text-blue-600 flex-1" onclick="console.log(e)">
+                    Student App
+                </div>
+
+                <div class="relative flex-[2] md:flex-1">
+                    <form>
+                        <input required name="firstName"
+                            class="py-[5px] px-[15px] text-[14px] md:text-[16px] pr-[90px] border-[2px] border-blue-400 focus:border-blue-600 outline-none rounded-full w-full"
+                            type="text" placeholder="Enter the student name">
+                        <div class="absolute top-0 right-0 bottom-0 p-[3px]">
+                            <button
+                                class="h-full px-[15px] text-[14px] md:text-[16px] text-white rounded-full bg-blue-500 hover:bg-blue-600 active:scale-95 font-semibold">
+                                Search
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="my-[20px]">
+        <div class="w-[90%] lg:w-[80%] mx-auto max-w-[1400px]">
+            <div class="flex justify-end items-center my-[10px]">
+                <button id="add-user"
+                    class="py-[4px] md:py-[7px] rounded-sm px-[15px] md:px-[20px] text-[14px] md:text-[16px] bg-teal-500 hover:bg-teal-600 text-white active:scale-95 font-semibold">
+                    + Add New Student
+                </button>
+            </div>
+            <table class="users-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Full name</th>
+                        <th>Email</th>
+                        <th>Phone number</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="student-content">
+                    <!-- Student data -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div id="modal-overlay"
+        class="overlay bg-black hidden z-20 bg-opacity-30 backdrop-blur-[2px] fixed top-0 left-0 right-0 bottom-0  justify-center items-start pt-[20vh]">
+        <div class="bg-white p-[20px] rounded-sm w-[500px]">
+            <div class="flex flex-col gap-3">
+                <div class="flex justify-between items-center gap-1">
+                    <h2 class="text-[20px] font-semibold">
+                        User information
+                    </h2>
+                    <button id="modal-close-btn"
+                        class="p-[5px] bg-gray-100 hover:bg-gray-200 w-[30px] h-[30px] rounded-sm flex active:scale-95 justify-center items-center text-[20px]">
+                        <i class='bx bx-x'></i>
+                    </button>
+                </div>
+                <form id="student-form" class="flex flex-col gap-3">
+                    <div class="flex justify-between gap-2">
+                        <div>
+                            <img id="user-image" class="w-[150px] h-[135px] rounded-sm border-[1px] object-cover"
+                                src="https://www.freeiconspng.com/thumbs/person-icon/person-icon-person-icon-17.jpg" alt="">
+                        </div>
+                        <div class="flex-1 flex flex-col gap-1">
+                            <div class="flex flex-col gap-1">
+                                <label class="text-[16px] font-semibold" for="first-name">First name:</label>
+                                <input required name="firstname"
+                                    class="py-[3px] px-[10px] focus:border-blue-600 outline-none text-[16px] border-[2px] border-blue-300 rounded-sm"
+                                    type="text" placeholder="First name" id="first-name">
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label class="text-[16px] font-semibold" for="last-name">Last name:</label>
+                                <input required name="lastname"
+                                    class="py-[3px] px-[10px] focus:border-blue-600 outline-none text-[16px] border-[2px] border-blue-300 rounded-sm"
+                                    type="text" placeholder="Last name" id="last-name">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex flex-col gap-1">
+                            <label class="text-[16px] font-semibold" for="photo-url">Photo url:</label>
+                            <div class="relative w-full">
+                                <input required name="image"
+                                    class="py-[3px]  w-full px-[10px] pr-[50px] focus:border-blue-600 outline-none text-[16px] border-[2px] border-blue-300 rounded-sm"
+                                    type="text" placeholder="Photo url" id="photo-url">
+                                <div class="absolute top-0 right-0 bottom-0 p-[4px]">
+                                    <button
+                                    id="show-image-btn"
+                                    type="button"
+                                        class="h-full rounded-sm text-[20px] hover:bg-gray-200 active:scale-95 px-[10px] bg-gray-100 flex justify-center items-center">
+                                        <i class='bx bx-show-alt'></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-1 justify-between">
+                        <div class="flex flex-col gap-1 flex-1">
+                            <label class="text-[16px] font-semibold" for="email">Email:</label>
+                            <input required name="email"
+                                class="py-[3px] w-full px-[10px] focus:border-blue-600 outline-none text-[16px] border-[2px] border-blue-300 rounded-sm"
+                                type="email" placeholder="Email" id="email">
+                        </div>
+                        <div class="flex flex-col gap-1 flex-1">
+                            <label class="text-[16px] font-semibold" for="phone-number">Phone number:</label>
+                            <input required name="phoneNumber"
+                                class="py-[3px] w-full px-[10px] focus:border-blue-600 outline-none text-[16px] border-[2px] border-blue-300 rounded-sm"
+                                type="number" placeholder="phone number" id="phone-number">
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-2" id="submit-wrapper">
+                        <button type="submit"
+                            class="py-[4px] px-[10px] bg-blue-500 hover:bg-blue-600 active:scale-95 text-white font-bold text-[16px] rounded-sm">
+                            + Add student
+                        </button>
+                        <!-- <button class="py-[4px] px-[10px] bg-blue-500 hover:bg-blue-600 active:scale-95 text-white font-bold text-[16px] rounded-sm">
+                            Save
+                        </button>
+                        <button class="py-[4px] px-[10px] bg-red-500 hover:bg-red-600 active:scale-95 text-white font-bold text-[16px] rounded-sm">
+                            Cancel
+                        </button> -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./js/app.js"></script>
+</body>
+
+</html>
